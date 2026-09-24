@@ -109,9 +109,9 @@ int main( int argc, char * argv[] )
 	cout << endl;
  
 	// AMORTIZATION TABLE
-	cout << "****************************************************************\n"
+	cout << "***************************************************************\n"
 	     << "\tAmortization Table\n"
-	     << "****************************************************************\n"
+	     << "***************************************************************\n"
 	     << "Month\tBalance\t\tPayment\tRate\tInterest\tPrincipal\n";
  
 	// LOOP TO FILL TABLE
@@ -151,7 +151,7 @@ int main( int argc, char * argv[] )
 			cout << "\t$" << interest << "\t\t$" << principal << "\n";
 		}
 	}
-	cout << "****************************************************************\n";
+	cout << "***************************************************************\n";
 	cout << "\nIt takes " << --currentMonth << " months to pay off "
 	     << "the loan.\n"
 	     << "Total interest paid is: $" << interestTotal;
