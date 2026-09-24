@@ -68,45 +68,39 @@ int main( int argc, char * argv[] )
 // need positive loan
 	if (argc < 2 || loan_amount <= 0)
 	{
-		cout << "(Invalid loan amount): " << (argc > 1 ? argv[1] : "missing")
-		     << " -- the loan must be positive." << endl;
+		cout << "(Invalid loan amount): " << (argc > 1 ? argv[1] : "") << endl;
 		return 0;
 	}
-	cout << "\nLoan Amount: " << argv[1] << endl;
 
+	// need interest rate that is not negative (0 is ok)
 	if (argc < 3 || yearly_interest_rate < 0)
 	{
-		cout << "(Invalid interest rate): " << argv[1] << " " << (argc > 2 ? argv[2] : "missing")
-		     << " -- the interest rate cannot be negative." << endl;
+		cout << "(Invalid interest rate): " << argv[1] << " " << (argc > 2 ? argv[2] : "") << endl;
 		return 0;
 	}
-	cout << "Interest Rate (% per year): " << argv[2] << endl;
- 
+
+	// need positive monthly payment
+	if (argc < 4 || monthly_payment <= 0)
+	{
+		cout << "(Invalid payment): " << argv[1] << " " << argv[2] << " " << (argc > 3 ? argv[3] : "") << endl;
+		return 0;
+	}
+
 	// GET PROPER INTEREST RATES FOR CALCULATIONS
 	interestRate = yearly_interest_rate / 12;
 	interestRateC = interestRate / 100;
- 
-	// need make sure monthly payment is sufficient
-	if (argc < 4 || monthly_payment <= 0)
-	{
-		cout << "(Invalid payment): " << argv[1] << " " << argv[2] << " "
-		     << (argc > 3 ? argv[3] : "missing")
-		     << " -- the monthly payment must be positive." << endl;
-		return 0;
-	}
-	cout << "Monthly Payments: " << argv[3] << endl;
- 
-	// MAke sure furst regular payment must is larger than the first month's interest
+
+	// Make sure first regular payment is larger than the first month's interest
 	// or else the loan never gets paid off unless one payment covers it all
 	if (monthly_payment <= loan_amount * interestRateC && loan_amount * (1 + interestRateC) > monthly_payment)
 	{
-		cout << "(Insufficient payment): the monthly payment $" << monthly_payment
-		     << " must be larger than the monthly interest $" << loan_amount * interestRateC
-		     << "." << endl;
+		cout << "(Insufficient payment): " << argv[1] << " " << argv[2] << " " << argv[3] << endl;
 		return 0;
 	}
- 
-	cout << endl;
+
+	cout << "\nLoan Amount: " << argv[1] << endl;
+	cout << "Interest Rate (% per year): " << argv[2] << endl;
+	cout << "Monthly Payments: " << argv[3] << endl;
  
 	// AMORTIZATION TABLE
 	cout << "***************************************************************\n"
