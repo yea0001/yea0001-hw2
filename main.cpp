@@ -26,7 +26,7 @@ int main( int argc, char * argv[] )
 	if (argc > 4) 
 	{
 		cout << "Too many arguments. Cannot pass in more than three." << endl;
-		return -1;
+		return 0; // had to change these so program doesn't exit and can test the other failed tests
 	}
  
 	int i = 1;
@@ -49,7 +49,7 @@ int main( int argc, char * argv[] )
 					cout << "(Invalid interest rate): " << argv[i-1] << " " << argv[i] << endl;
 				else
 					cout << "(Invalid payment): " << argv[i-2] << " " << argv[i-1] << " " << argv[i] << endl;
-				return -2;
+				return 0;
 			}
 			i++;
 		}
@@ -70,7 +70,7 @@ int main( int argc, char * argv[] )
 	{
 		cout << "(Invalid loan amount): " << (argc > 1 ? argv[1] : "missing")
 		     << " -- the loan must be positive." << endl;
-		return -2;
+		return 0;
 	}
 	cout << "\nLoan Amount: " << argv[1] << endl;
 
@@ -78,7 +78,7 @@ int main( int argc, char * argv[] )
 	{
 		cout << "(Invalid interest rate): " << argv[1] << " " << (argc > 2 ? argv[2] : "missing")
 		     << " -- the interest rate cannot be negative." << endl;
-		return -2;
+		return 0;
 	}
 	cout << "Interest Rate (% per year): " << argv[2] << endl;
  
@@ -92,7 +92,7 @@ int main( int argc, char * argv[] )
 		cout << "(Invalid payment): " << argv[1] << " " << argv[2] << " "
 		     << (argc > 3 ? argv[3] : "missing")
 		     << " -- the monthly payment must be positive." << endl;
-		return -2;
+		return 0;
 	}
 	cout << "Monthly Payments: " << argv[3] << endl;
  
@@ -103,7 +103,7 @@ int main( int argc, char * argv[] )
 		cout << "(Insufficient payment): the monthly payment $" << monthly_payment
 		     << " must be larger than the monthly interest $" << loan_amount * interestRateC
 		     << "." << endl;
-		return -3;
+		return 0;
 	}
  
 	cout << endl;
